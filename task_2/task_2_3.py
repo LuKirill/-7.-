@@ -21,7 +21,8 @@ from random import randint
 from timeit import timeit
 from statistics import median
 
-array = [randint(0, 100) for i in range(2 * randint(0, 1000) + 1)]
+m = randint(0, 100)
+array = [randint(0, 100) for i in range(2 * m + 1)]
 
 print(median(array))
 print(timeit('median(array)', globals=globals(), number=1000))
