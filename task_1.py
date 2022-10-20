@@ -43,17 +43,11 @@ some_list = [randint(-100, 99) for i in range(200)]
 
 print(f'Случайный список: {some_list}')
 print()
-print(rev_bubble(some_list))
-q = rev_bubble(some_list)
-print(timeit('rev_bubble(some_list)', globals=globals(), number=10000))
-print()
+q = rev_bubble(some_list[:])
 print(q)
-print(timeit('q', globals=globals(), number=10000))
+print(timeit('q', globals=globals(), number=1000))
 
 """
 Для того, чтобы сортировка пузырьком не делала сравнений элементов в отсортированном списке, я ввел переменную с.
 Цикл по сортировке будет выполняться до тех пор пока с != 0, в противном случае произойдет выход из цикла.
-
-Применив функцию rev_babble к отсортированному списку, получилось 0 проходов по списку и время выполнения скрипта
-уменьшилось на 3 порядка.
 """

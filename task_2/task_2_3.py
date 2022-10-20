@@ -21,18 +21,18 @@ from random import randint
 from timeit import timeit
 from statistics import median
 
-array = [randint(0, 100) for i in range(2 * randint(0, 1000) + 1)]
+m = randint(0, 10)
+array = [randint(0, 100) for i in range(2 * m + 1)]
 
 print(median(array))
-print(timeit('median(array)', globals=globals(), number=1000))
+print(timeit('median(array[:])', globals=globals(), number=1000))
 
 """
 Время выполнения скрипта при длине списка 
 10 элементов - 0.00047729999641887844
-100 элементов - 0.008428600005572662
-1000 элементов - 0.06791879999218509
+100 элементов - 0.01223660001414828
+1000 элементов - 0.0365561000071466
 
 
-Самый быстрый способ нахождения медианы если список не отсортирован это метод без сортировки списка(удаление максимумов)
-Так показали замеры.
+Самый быстрый способ нахождения медианы - это встроенная функция median
 """

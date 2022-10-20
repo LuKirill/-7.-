@@ -18,22 +18,34 @@
 from random import randint
 from timeit import timeit
 
-array = [randint(0, 100) for i in range(2 * randint(0, 100) + 1)]
+m = randint(0, 10)
+array = [randint(0, 100) for i in range(2 * m + 1)]
 
 
 def median(unsorted_list):
     a = unsorted_list
-    for i in range(len(a) // 2):
-        a.pop(a.index(max(a)))
-    return max(a)
+    try:
+        if len(a) % 2 == 0:
+            for j in range(len(a) // 2 - 1):
+                a.pop(a.index(max(a)))
+            q = a.pop(a.index(max(a)))
+            w = a.pop(a.index(max(a)))
+            return (q + w) / 2
+        if len(a) % 2 != 0:
+            for i in range(len(a) // 2):
+                a.pop(a.index(max(a)))
+            return max(a)
+    except ValueError:
+        return f'max() arg is an empty sequence'
 
 
-print(median(array))
-print(timeit('median(array)', globals=globals(), number=1000))
+print(f'Медиана списка array: {median(array)}')
+print(timeit('median(array[:])', globals=globals(), number=1000))
 
 """
 Время выполнения скрипта при длине списка 
-10 элементов - 0.0004563000111375004
-100 элементов - 0.0005400999798439443
-1000 элементов - 0.002702300000237301
-"""
+10 элементов - 0.003694499988341704
+100 элементов - 0.08625130000291392
+1000 элементов - 1.92464270000346
+Улучшил скрипт - дописал возможность находить медиану в четном списке.
+Но для подсчета времени лучше использовать отдельно скрипт для четных списков, отдельно для нечетных списков"""
