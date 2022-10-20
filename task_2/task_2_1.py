@@ -60,8 +60,8 @@ p = pyramid(array)
 print(f'Отсортированный список сортировкой КУЧА: {p}')
 print(f'Медиана: {median(p)}')
 print(f'Индекс медианы: {m}')
-print(timeit('pyramid(array)', globals=globals(), number=1000))
-print(timeit('median(array)', globals=globals(), number=1000))
+print(timeit('pyramid(array[:])', globals=globals(), number=1000))
+print(timeit('median(array[:])', globals=globals(), number=1000))
 
 """
 Для сортировки списка 2m + 1 я выбрал способ "КУЧА", тк этот способ имеет стабильную сложность О(n*logn), 
